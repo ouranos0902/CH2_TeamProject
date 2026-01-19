@@ -2,15 +2,7 @@
 
 
 
-ACharacter::ACharacter()
-{
-	Name = "Unknown";
-	HP = 100;
-	Atk = 10;
 
-	std::cout << "ACharacter »ý¼ºµÊ: " << Name << " (HP: " << HP << ")" << std::endl;
-
-}
 
 ACharacter::ACharacter(std::string NewName, int NewHP, int NewAtk)
 {
@@ -27,9 +19,10 @@ ACharacter::~ACharacter()
 	std::cout << "ACharacter ¼Ò¸êµÊ" << std::endl;
 }
 
-void ACharacter::Attack()
+void ACharacter::Attack(ACharacter* Target)
 {
 	std::cout << Name << "°¡ °ø°Ý ÇÕ´Ï´Ù! (°ø°Ý·Â: " << Atk << ")" << std::endl;
+	Target->TakeDamage(Atk);
 }
 
 void ACharacter::TakeDamage(int DamageAmount)

@@ -15,10 +15,8 @@ int main()
 
     while(!Player->IsDead() && !Monster->IsDead())
     {
-        Player->Attack();
-        Monster->TakeDamage(20);
-
-
+        Player->Attack(Monster);
+      
         if (Monster->IsDead())
         {
             std::cout << "몬스터가 쓰러졌습니다! 승리!" << std::endl;
@@ -27,14 +25,14 @@ int main()
 
         Sleep(500);
 
-        Monster->Attack();
-        Player->TakeDamage(10);
-
+        Monster->Attack(Player);
+       
         if (Player->IsDead())
         {
             std::cout << "플레이어가 쓰러졌습니다...패배..." << std::endl;
         }
 
+        Sleep(1000);
     }
    
     delete Player;

@@ -5,6 +5,9 @@
 class AMonster : public ACharacter
 {
 public:
-	virtual void Attack(ACharacter* Target)override
+
+	AMonster(std::string NewName, const FUnitStat& NewStat);
+	virtual void Attack(ACharacter* Target)override;
+
 };
 

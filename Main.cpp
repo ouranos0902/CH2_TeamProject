@@ -1,37 +1,49 @@
 ﻿#include <iostream>
 #include "Character/Character.h"
+#include "Player/Player.h"
+#include "Vampire.h"
 #include<Windows.h>
+
+bool BattleTurn(ACharacter* Attacker, ACharacter* Defender) 
+{
+    Attacker->DoAction(Defender);
+
+    if (Defender->IsDead())
+    {
+        return true;
+    }
+
+    return false;
+}
 
 
 int main()
 {
-    
-    ACharacter* Player = new ACharacter("용사", 200,20, 5, 10);
-    ACharacter* Monster = new ACharacter("오크", 150,10, 5, 5);
+    std::string name;
+    std::cout << "이름을 정해주세요" << std::endl;
+    std::cin >> name;
+
+    ACharacter* Player = new APlayer(name);
+    ACharacter* Monster = new AVampire("뱀파이어", FUnitStat{ 50, 20, 20, 5, 10 });
 
     
     std::cout << " === 데스매치 시작! ===" << std::endl;
     Sleep(1000);
 
-    while(!Player->IsDead() && !Monster->IsDead())
+    while (true)
     {
-        Player->Attack(Monster);
-      
-        if (Monster->IsDead())
+        if (BattleTurn(Player, Monster) == true)
         {
-            std::cout << "몬스터가 쓰러졌습니다! 승리!" << std::endl;
             break;
         }
-
+        
         Sleep(500);
 
-        Monster->Attack(Player);
-       
-        if (Player->IsDead())
+        if (BattleTurn(Monster, Player) == true)
         {
-            std::cout << "플레이어가 쓰러졌습니다...패배..." << std::endl;
+            break;
         }
-
+        
         Sleep(1000);
     }
    

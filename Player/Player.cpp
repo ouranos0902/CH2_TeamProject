@@ -6,6 +6,8 @@ APlayer::APlayer(std::string NewName)
 	: ACharacter(NewName, FUnitStat{ 100, 100, 30, 30, 20, 5, 10 })
 {
 	Level = 1;
+	MaxLevel = 10;
+	Exp = 0;
 }
 	
 
@@ -33,5 +35,32 @@ void APlayer::UseSkill(ACharacter* Target)
 
 	}
 
+}
 
+int APlayer::GetLevel()
+{
+	return Level;
+}
+
+void APlayer::LevelUp()
+{
+	while(Exp >= 100 && Level < 10)
+	{
+		
+		Level++;
+		Stat.MaxHp += Level * 20;
+		Stat.Atk += Level * 5;
+		Stat.Hp = Stat.MaxHp;
+	    Exp -= 100;
+		
+	}
+}
+
+void APlayer::GainExp(int ExpAmount)
+{
+	if (Level != 10)
+	{
+		Exp += ExpAmount;
+		LevelUp();
+	}
 }

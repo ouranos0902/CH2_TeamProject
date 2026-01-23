@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Character/Character.h"
 
 
@@ -8,6 +9,9 @@ public:
 
 	AMonster(std::string NewName, const FUnitStat& NewStat);
 	virtual void Attack(ACharacter* Target)override;
+
+
+private:
 
 };
 

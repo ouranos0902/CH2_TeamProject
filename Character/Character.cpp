@@ -1,15 +1,6 @@
 #include "Character.h"
+#include "RandomUtil.h"
 #include <random>
-
-
-int getRandomInt()
-{
-	static std::random_device rd;
-    static std::mt19937 gen(rd());
-	std::uniform_int_distribution<int> dis(0, 100);
-
-	return dis(gen);
-}
 
 
 ACharacter::ACharacter(std::string NewName, const FUnitStat& NewStat)
@@ -31,9 +22,9 @@ void ACharacter::Attack(ACharacter* Target)
 	
 	
 
-	if (getRandomInt() <= Stat.Critical) //크리티컬이면
+	if (getRandomInt(0,100) <= Stat.Critical) //크리티컬이면
 	{
-
+		
 		float CriticalDamage = Stat.Atk * 1.5f;//데미지를 1.5배해라 
 		
 		std::cout << Name << "(이)가 치명타 공격 합니다! (공격력: " << CriticalDamage << ")" << std::endl;

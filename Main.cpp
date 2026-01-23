@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include "Character/Character.h"
 #include "Player/Player.h"
-#include "Vampire.h"
+#include "Vampire/Vampire.h"
 #include<Windows.h>
 
 bool BattleTurn(ACharacter* Attacker, ACharacter* Defender) 

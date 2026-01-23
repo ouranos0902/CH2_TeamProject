@@ -6,8 +6,8 @@
 int main()
 {
     
-    ACharacter* Player = new ACharacter("용사", 200,20);
-    ACharacter* Monster = new ACharacter("오크", 150,10);
+    ACharacter* Player = new ACharacter("용사", 200,20, 5, 10);
+    ACharacter* Monster = new ACharacter("오크", 150,10, 5, 5);
 
     
     std::cout << " === 데스매치 시작! ===" << std::endl;

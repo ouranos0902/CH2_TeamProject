@@ -1,5 +1,10 @@
 #pragma once
-class AMonster
+#include "Character/Character.h"
+
+
+class AMonster : public ACharacter
 {
+public:
+	virtual void Attack(ACharacter* Target)override
 };
 

@@ -2,23 +2,42 @@
 #include <iostream>
 #include <string>
 
+struct FUnitStat
+{
+	int Hp;
+	int Atk;
+	int Def;
+	float Critical;
+};
+
 class ACharacter
 {
 public:
 
-	ACharacter(std::string NewName, int NewHP, int NewAtk);
+	
+	//ACharacter(std::string NewName, int NewHp, int NewAtk, int NewDef, int NewCri);
+	ACharacter(std::string NewName, const FUnitStat& NewStat);
 	~ACharacter();
 
-	void Attack(ACharacter* Target);
+	virtual void Attack(ACharacter* Target);
 	void TakeDamage(int DamageAmount);
 	
 	int GetHP();
 	bool IsDead();
 
+	
+
 protected:
 
-	int HP;
-	int Atk;
 	std::string Name;
+	
+	FUnitStat Stat;
+	
+	/*int Hp;
+	int Atk;
+	int Def
+	int Critical;
+	*/
+
 
 };

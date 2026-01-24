@@ -21,6 +21,7 @@ void APlayer::UseSkill(ACharacter* Target)
 	if (Stat.Mp < 10)
 	{
 		std::cout << "마나가 부족합니다!" << std::endl;
+		//early return 참고, 여기서 return 하면 else 제거 가능.
 	}
 	else
 	{

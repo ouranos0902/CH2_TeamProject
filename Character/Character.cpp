@@ -28,7 +28,7 @@ ACharacter::~ACharacter()
 
 void ACharacter::Attack(ACharacter* Target)
 {
-	
+	//빈 줄 제거
 	
 
 	if (getRandomInt() <= Stat.Critical) //크리티컬이면
@@ -36,15 +36,17 @@ void ACharacter::Attack(ACharacter* Target)
 
 		float CriticalDamage = Stat.Atk * 1.5f;//데미지를 1.5배해라 
 		
+		//std 많이 쓰는 경우는, cpp 내에서 using namespace std; 권장
 		std::cout << Name << "(이)가 치명타 공격 합니다! (공격력: " << CriticalDamage << ")" << std::endl;
-
+		
+		//static_cast 누락
 		Target->TakeDamage(CriticalDamage);
 	}
-
 	else
 	{
 		std::cout << Name << "(이)가 공격 합니다! (공격력: " << Stat.Atk << ")" << std::endl;
 
+		//TakeDamage() 함수 - 크리티컬/ 비크리티컬 통일시켜서 한 줄로 합칠 수 있음.
 		Target->TakeDamage(Stat.Atk);
 	}
 	
@@ -53,10 +55,10 @@ void ACharacter::Attack(ACharacter* Target)
 
 void ACharacter::TakeDamage(int DamageAmount)
 {
-
+	// FinalDamage, CalcDamage 정도로 이름 변경
 	int RealDamage = DamageAmount - Stat.Def;
 	
-
+	//std::max()로 교체 가능
 	if (RealDamage < 0)
 	{
 		RealDamage = 0;
@@ -95,6 +97,7 @@ int  ACharacter::GetMaxMP()
 
 bool ACharacter::IsDead()
 {
+	// return Stat.HP <= 0;
 	return Stat.Hp <= 0 ? true : false;
 }
 

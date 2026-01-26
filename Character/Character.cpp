@@ -1,7 +1,9 @@
-#include "Character.h"
+ï»¿#include "Character.h"
 #include "RandomUtil.h"
 #include <random>
+#include <algorithm>
 
+using namespace std;
 
 ACharacter::ACharacter(std::string NewName, const FUnitStat& NewStat)
 	: Name(NewName),
@@ -11,103 +13,53 @@ ACharacter::ACharacter(std::string NewName, const FUnitStat& NewStat)
 	Stat.Mp = Stat.MaxMp;
 }
 
-
 ACharacter::~ACharacter()
 {
-	std::cout << "ACharacter ¼Ò¸êµÊ" << std::endl;
+	cout << "ACharacter ì†Œë©¸ë¨" << endl;
 }
 
 void ACharacter::Attack(ACharacter* Target)
 {
-	//ºó ÁÙ Á¦°Å
-	
+	int CalcDamage = Stat.Atk;
+	string attackMsg = "(ì´)ê°€ ê³µê²© í•©ë‹ˆë‹¤!";
 
-	if (getRandomInt(0,100) <= Stat.Critical) //Å©¸®Æ¼ÄÃÀÌ¸é
+	if (getRandomInt(0,100) <= Stat.Critical) 
 	{
-		
-		float CriticalDamage = Stat.Atk * 1.5f;//µ¥¹ÌÁö¸¦ 1.5¹èÇØ¶ó 
-		
-		//std ¸¹ÀÌ ¾²´Â °æ¿ì´Â, cpp ³»¿¡¼­ using namespace std; ±ÇÀå
-		std::cout << Name << "(ÀÌ)°¡ Ä¡¸íÅ¸ °ø°İ ÇÕ´Ï´Ù! (°ø°İ·Â: " << CriticalDamage << ")" << std::endl;
-		
-		//static_cast ´©¶ô
-		Target->TakeDamage(CriticalDamage);
+		CalcDamage = static_cast<int>(Stat.Atk * 1.5f);
+		attackMsg = "(ì´)ê°€ ì¹˜ëª…íƒ€ ê³µê²©ì„ í•©ë‹ˆë‹¤!";
 	}
-	else
-	{
-		std::cout << Name << "(ÀÌ)°¡ °ø°İ ÇÕ´Ï´Ù! (°ø°İ·Â: " << Stat.Atk << ")" << std::endl;
-
-		//TakeDamage() ÇÔ¼ö - Å©¸®Æ¼ÄÃ/ ºñÅ©¸®Æ¼ÄÃ ÅëÀÏ½ÃÄÑ¼­ ÇÑ ÁÙ·Î ÇÕÄ¥ ¼ö ÀÖÀ½.
-		Target->TakeDamage(Stat.Atk);
-	}
-	
-
+		cout << Name << attackMsg << CalcDamage << endl;
+		Target->TakeDamage(CalcDamage);
 }
 
 void ACharacter::TakeDamage(int DamageAmount)
 {
-	// FinalDamage, CalcDamage Á¤µµ·Î ÀÌ¸§ º¯°æ
-	int RealDamage = DamageAmount - Stat.Def;
-	
-	//std::max()·Î ±³Ã¼ °¡´É
-	if (RealDamage < 0)
-	{
-		RealDamage = 0;
-	}
+	int FinalDamage = max(DamageAmount = Stat.Def, 0);
 
-	Stat.Hp -= RealDamage;
+	Stat.Hp = max(Stat.Hp - FinalDamage, 0);
 
-	if (Stat.Hp < 0)
-	{
-		Stat.Hp = 0;
-	}
-	
-	std::cout << Name << "(ÀÌ)°¡ " << RealDamage << "ÀÇ ÇÇÇØ¸¦ ÀÔ¾ú½À´Ï´Ù." << std::endl;
-	std::cout << " ->" << Name << "ÀÇ ³²Àº Ã¼·Â : " << GetHP() << std::endl;
-}
-
-int ACharacter::GetHP()
-{
-	return Stat.Hp;
-}
-
-int  ACharacter::GetMaxHP()
-{
-	return Stat.MaxHp;
-}
-
-int  ACharacter::GetMP()
-{
-	return Stat.Mp;
-}
-
-int  ACharacter::GetMaxMP()
-{
-	return Stat.MaxMp;
+	cout << Name << "(ì´)ê°€ " << FinalDamage << "ì˜ í”¼í•´ë¥¼ ì…ì—ˆìŠµë‹ˆë‹¤." << endl;
+	cout << " ->" << Name << "ì˜ ë‚¨ì€ ì²´ë ¥ : " << GetHP() << endl;
 }
 
 bool ACharacter::IsDead()
 {
-	// return Stat.HP <= 0;
-	return Stat.Hp <= 0 ? true : false;
+	return Stat.Hp <= 0;
 }
 
 
 void ACharacter::DoAction(ACharacter* Target)
 {
-	if (getRandomInt() < 70)
+	if (getRandomInt(0,100) < 70)
 	{
 		Attack(Target);
-		
 	}
 	else
 	{
-		
 		if (Stat.Mp < 10)
 		{
-			std::cout << "¸¶³ª°¡ ºÎÁ·ÇÕ´Ï´Ù" << std::endl;
+			cout << "ë§ˆë‚˜ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤" << endl;
 			Attack(Target);
-			
 		}
 		else
 		{
@@ -119,7 +71,6 @@ void ACharacter::DoAction(ACharacter* Target)
 
 void ACharacter::ShowStat()
 {
-	std::cout << "[" << Name << "]" << "HP : " << GetHP() << " / " << GetMaxHP() << "|"
-		<< "MP: " << GetMP() << " / " << GetMaxMP() << std::endl;
-
+	cout << "[" << Name << "]" << "HP : " << GetHP() << " / " << GetMaxHP() << "|"
+		<< "MP: " << GetMP() << " / " << GetMaxMP() << endl;
 }

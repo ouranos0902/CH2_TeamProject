@@ -124,17 +124,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Monster\Monster.cpp" />
-    <ClCompile Include="Player\Player.cpp" />
+    <ClCompile Include="Character\Monster\Monster.cpp" />
+    <ClCompile Include="Character\Player\Player.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Character\Character.cpp" />
-    <ClCompile Include="Vampire\Vampire.cpp" />
+    <ClCompile Include="Character\Monster\Vampire\Vampire.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Monster\Monster.h" />
-    <ClInclude Include="Player\Player.h" />
+    <ClInclude Include="Character\Monster\Monster.h" />
+    <ClInclude Include="Character\Player\Player.h" />
     <ClInclude Include="Character\Character.h" />
-    <ClInclude Include="Vampire\Vampire.h" />
+    <ClInclude Include="Character\Monster\Vampire\Vampire.h" />
     <ClInclude Include="RandomUtil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

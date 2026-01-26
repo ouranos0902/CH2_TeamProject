@@ -1,13 +1,11 @@
-#pragma once
-
+﻿#pragma once
 #include "Character/Character.h"
-
+using namespace std;
 
 class AMonster : public ACharacter
 {
 public:
-	//string -> const string&
-	AMonster(std::string NewName, const FUnitStat& NewStat);
+	AMonster(const string& NewName, const FUnitStat& NewStat);
 	virtual void Attack(ACharacter* Target)override;
 
 

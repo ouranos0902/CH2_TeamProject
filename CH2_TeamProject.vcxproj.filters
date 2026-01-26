@@ -27,7 +27,7 @@
     <ClCompile Include="Monster\Monster.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Vampire.cpp">
+    <ClCompile Include="Vampire\Vampire.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,10 @@
     <ClInclude Include="Monster\Monster.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Vampire.h">
+    <ClInclude Include="Vampire\Vampire.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomUtil.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

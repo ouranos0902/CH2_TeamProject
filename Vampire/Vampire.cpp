@@ -1,7 +1,7 @@
 #include "Vampire.h"
 
 
-AVampire::AVampire(std::string NewName, const FUnitStat NewStat)
+AVampire::AVampire()
 	: AMonster("¹ìÆÄÀÌ¾î", FUnitStat{ 50, 50, 30, 30, 20, 5, 10 })
 {
 

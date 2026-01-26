@@ -24,7 +24,7 @@ int main()
     std::cin >> name;
 
     ACharacter* Player = new APlayer(name);
-    ACharacter* Monster = new AVampire("뱀파이어", FUnitStat{ 50, 20, 20, 5, 10 });
+    ACharacter* Monster = new AVampire();
 
     
     std::cout << " === 데스매치 시작! ===" << std::endl;

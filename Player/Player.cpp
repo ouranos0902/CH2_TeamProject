@@ -13,7 +13,7 @@ APlayer::APlayer(std::string NewName)
 
 void APlayer::Attack(ACharacter* Target)
 {
-	std::cout << "ÇÃ·¹ÀÌ¾î " << Name << "(ÀÌ)°¡ °ø°ÝÀ» Çß½À´Ï´Ù!" << std::endl;
+	std::cout << "í”Œë ˆì´ì–´ " << Name << "(ì´)ê°€ ê³µê²©ì„ í–ˆìŠµë‹ˆë‹¤!" << std::endl;
 
 	Target->TakeDamage(Stat.Atk);
 }
@@ -22,12 +22,12 @@ void APlayer::UseSkill(ACharacter* Target)
 {
 	if (Stat.Mp < 10)
 	{
-		std::cout << "¸¶³ª°¡ ºÎÁ·ÇÕ´Ï´Ù!" << std::endl;
-		//early return Âü°í, ¿©±â¼­ return ÇÏ¸é else Á¦°Å °¡´É.
+		std::cout << "ë§ˆë‚˜ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤!" << std::endl;
+		//early return ì°¸ê³ , ì—¬ê¸°ì„œ return í•˜ë©´ else ì œê±° ê°€ëŠ¥.
 	}
 	else
 	{
-		std::cout << "ÇÃ·¹ÀÌ¾î " << Name << "(ÀÌ)°¡ È¸½ÉÀÇ ÀÏ°ÝÀ» »ç¿ëÇÕ´Ï´Ù." << std::endl;
+		std::cout << "í”Œë ˆì´ì–´ " << Name << "(ì´)ê°€ íšŒì‹¬ì˜ ì¼ê²©ì„ ì‚¬ìš©í•©ë‹ˆë‹¤." << std::endl;
 
 		Stat.Mp -= 10;
 		int SkillDamage = Stat.Atk * 2;

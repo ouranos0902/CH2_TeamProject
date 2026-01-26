@@ -1,4 +1,4 @@
-#include "Vampire.h"
+﻿#include "Vampire.h"
 
 //���⵵ �÷��̾�ó�� ������ ���� �ʿ�
 AVampire::AVampire()

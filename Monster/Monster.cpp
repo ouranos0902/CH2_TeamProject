@@ -3,7 +3,7 @@
 #include <random>
 
 
-// Stat.MaxHp = Level * getRandomInt(10, 20); Ã¼·Â
+// Stat.MaxHp = Level * getRandomInt(10, 20); ì²´ë ¥
 // Stat.Atk = Level * getRandomInt(5, 10);
 
 AMonster::AMonster(std::string NewName, const FUnitStat& NewStat)
@@ -14,7 +14,7 @@ AMonster::AMonster(std::string NewName, const FUnitStat& NewStat)
 
 void AMonster::Attack(ACharacter* Target)
 {
-	std::cout << "¸ó½ºÅÍ " << Name << "ÀÌ(°¡) ÀÌ»¡·Î ¹°¾î ¶â½À´Ï´Ù!" << std::endl;
+	std::cout << "ëª¬ìŠ¤í„° " << Name << "ì´(ê°€) ì´ë¹¨ë¡œ ë¬¼ì–´ ëœ¯ìŠµë‹ˆë‹¤!" << std::endl;
 	
 	Target->TakeDamage(Stat.Atk);
 }

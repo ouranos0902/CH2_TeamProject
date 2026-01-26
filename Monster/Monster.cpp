@@ -1,10 +1,15 @@
 #include "Monster.h"
+#include "RandomUtil.h"
+#include <random>
 
+
+// Stat.MaxHp = Level * getRandomInt(10, 20); Ã¼·Â
+// Stat.Atk = Level * getRandomInt(5, 10);
 
 AMonster::AMonster(std::string NewName, const FUnitStat& NewStat)
 	: ACharacter(NewName,NewStat)
 {
-
+	
 }
 
 void AMonster::Attack(ACharacter* Target)
@@ -13,3 +18,4 @@ void AMonster::Attack(ACharacter* Target)
 	
 	Target->TakeDamage(Stat.Atk);
 }
+

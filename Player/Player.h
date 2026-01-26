@@ -14,9 +14,16 @@ public:
 	// 코드 자동 정렬 단축키로 띄어쓰기 정리합시다.
 	virtual void UseSkill(ACharacter* Target)override;
 
+
+	int GetLevel();
+	void LevelUp();
+	void GainExp(int ExpAmount);
+
+
 private:
 	//빈 줄 정리
 	int Level;
-
+	int MaxLevel;
+	int Exp;
 };
 

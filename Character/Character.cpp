@@ -1,15 +1,6 @@
 #include "Character.h"
+#include "RandomUtil.h"
 #include <random>
-
-
-int getRandomInt()
-{
-	static std::random_device rd;
-    static std::mt19937 gen(rd());
-	std::uniform_int_distribution<int> dis(0, 100);
-
-	return dis(gen);
-}
 
 
 ACharacter::ACharacter(std::string NewName, const FUnitStat& NewStat)
@@ -31,9 +22,9 @@ void ACharacter::Attack(ACharacter* Target)
 	//빈 줄 제거
 	
 
-	if (getRandomInt() <= Stat.Critical) //크리티컬이면
+	if (getRandomInt(0,100) <= Stat.Critical) //크리티컬이면
 	{
-
+		
 		float CriticalDamage = Stat.Atk * 1.5f;//데미지를 1.5배해라 
 		
 		//std 많이 쓰는 경우는, cpp 내에서 using namespace std; 권장

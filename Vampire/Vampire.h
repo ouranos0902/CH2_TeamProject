@@ -5,7 +5,7 @@ class AVampire : public AMonster
 {
 
 public:
-	AVampire(std::string NewName, const FUnitStat NewStat);
+	AVampire();
 	void UseSkill(ACharacter* Target) override;
 };
 

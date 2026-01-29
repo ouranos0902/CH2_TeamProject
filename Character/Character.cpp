@@ -1,6 +1,7 @@
 ﻿#include "Character.h"
-#include "RandomUtil"
 #include <iostream>
+#include "RandomUtil.h"
+
 
 
 using namespace std;
@@ -24,7 +25,7 @@ ACharacter::~ACharacter()
 FDamageResult ACharacter::Attack(ACharacter* Target)
 {
 	int Damage = Stat.Atk;
-	bool bCritical = GetRandomInt(1,100) < Stat.Critical;
+	bool bCritical = getRandomInt(1,100) < Stat.Critical;
 	if (bCritical)
 	{
 		Damage = static_cast<int>(Damage * 1.5f);

@@ -6,7 +6,7 @@ class AMonster : public ACharacter
 {
 public:
 	AMonster(const string& NewName, const FUnitStat& NewStat);
-	virtual void Attack(ACharacter* Target)override;
+	virtual FDamageResult Attack(ACharacter* Target)override;
 
 
 private:

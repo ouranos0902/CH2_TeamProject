@@ -13,14 +13,20 @@ struct FUnitStat
     int Critical;
 };
 
+struct FDamageResult
+{
+	int Damage;
+	bool bCritical;
+};
+
 class ACharacter
 {
 public:
 	ACharacter(std::string NewName, const FUnitStat& NewStat);
 	~ACharacter();
-	virtual void Attack(ACharacter* Target);
+	virtual FDamageResult Attack(ACharacter* Target);
 	virtual void UseSkill(ACharacter* Target) = 0;
-	void TakeDamage(int DamageAmount);
+	int TakeDamage(int DamageAmount);
 	void DoAction(ACharacter* Target);
 	bool IsDead();
 	void ShowStat();
@@ -28,6 +34,7 @@ public:
 	int GetMaxHP(){	return Stat.MaxHp;}
 	int GetMP(){return Stat.Mp;}
 	int GetMaxMP(){return Stat.MaxMp;}
+	std::string GetName(){ return Name; }
 
 protected:
 	std::string Name;

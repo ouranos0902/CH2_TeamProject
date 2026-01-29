@@ -11,10 +11,21 @@ AMonster::AMonster(const string& NewName, const FUnitStat& NewStat)
 {
 }
 
-void AMonster::Attack(ACharacter* Target)
+FDamageResult AMonster::Attack(ACharacter* Target)
 {
-	cout << "몬스터 " << Name << " 이(가) 이빨로 물어 뜯습니다!" << endl;
+
+	FDamageResult result = ACharacter::Attack(Target);
+
+	string AttackMessage = " 이(가) 이빨로 물어 뜯습니다.";
 	
-	ACharacter::Attack(Target);
+	if (result.bCritical)
+	{
+		AttackMessage = " 이(가) 급소를 물어 뜯습니다!";
+	}
+
+	cout << "몬스터" << Name << AttackMessage << "데미지 : " << result.Damage << endl;
+	cout <<"[" << Target->GetName() << "]" << " " << Target->GetHP() << endl;
+
+	return result;
 }
 

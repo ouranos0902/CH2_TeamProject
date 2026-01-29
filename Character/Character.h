@@ -4,13 +4,14 @@
 
 struct FUnitStat
 {
-	int Hp;
+	int Hp = 0;
 	int MaxHp;
-	int Mp;
+	int Mp = 0;
 	int MaxMp;
 	int Atk;
 	int Def;
-    int Critical;
+	int Critical;
+
 };
 
 struct FDamageResult

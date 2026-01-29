@@ -23,10 +23,9 @@ FDamageResult ACharacter::Attack(ACharacter* Target)
 	int Damage = Stat.Atk;
 	bool bCritical = getRandomInt(1, 100) <= Stat.Critical;
 
-	if (bCritical) 
+	if (bCritical)  
 	{
 		Damage = static_cast<int>(Stat.Atk * 1.5f);
-		
 	}
 
 	int FinalDamage = Target->TakeDamage(Damage);
@@ -38,11 +37,11 @@ FDamageResult ACharacter::Attack(ACharacter* Target)
 
 int ACharacter::TakeDamage(int DamageAmount)
 {
-	int FinalDamage = max(DamageAmount - Stat.Def, 0);
+	int CalcDamage = max(DamageAmount - Stat.Def, 0);
 
-	Stat.Hp = max(Stat.Hp - FinalDamage, 0);
+	Stat.Hp = max(Stat.Hp - CalcDamage, 0);
 
-	return FinalDamage;
+	return CalcDamage;
 }
 
 bool ACharacter::IsDead()
@@ -53,7 +52,7 @@ bool ACharacter::IsDead()
 
 void ACharacter::DoAction(ACharacter* Target)
 {
-	if (getRandomInt(0,100) < 70)
+	if (getRandomInt(1,100) < 70)
 	{
 		Attack(Target);
 	}

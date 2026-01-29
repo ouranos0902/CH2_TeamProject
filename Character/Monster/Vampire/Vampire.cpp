@@ -1,7 +1,7 @@
 ﻿#include "Vampire.h"
 
 AVampire::AVampire()
-	: AMonster("뱀파이어", FUnitStat{ 50, 50, 30, 30, 20, 5, 10 })
+	: AMonster("뱀파이어", FUnitStat{ 50, 50, 30, 30, 20, 5, 10})
 {
 
 }

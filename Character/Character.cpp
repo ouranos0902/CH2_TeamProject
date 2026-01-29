@@ -1,16 +1,19 @@
 ﻿#include "Character.h"
-#include "RandomUtil.h"
-#include <random>
-#include <algorithm>
+#include "RandomUtil"
+#include <iostream>
+
 
 using namespace std;
 
-ACharacter::ACharacter(std::string NewName, const FUnitStat& NewStat)
-	: Name(NewName),
-	Stat(NewStat)
+ACharacter::ACharacter(const string& NewName, const FUnitStat& UnitStat)
 {
+	Name = NewName;
+	Stat = UnitStat;
+	
 	Stat.Hp = Stat.MaxHp;
 	Stat.Mp = Stat.MaxMp;
+
+	cout << "[생성] " << Name << "가 전장에 나타났습니다! (HP: " << Stat.Hp << ")" << endl;
 }
 
 ACharacter::~ACharacter()
@@ -21,13 +24,12 @@ ACharacter::~ACharacter()
 FDamageResult ACharacter::Attack(ACharacter* Target)
 {
 	int Damage = Stat.Atk;
-	bool bCritical = getRandomInt(1, 100) <= Stat.Critical;
-
-	if (bCritical)  
+	bool bCritical = GetRandomInt(1,100) < Stat.Critical;
+	if (bCritical)
 	{
-		Damage = static_cast<int>(Stat.Atk * 1.5f);
+		Damage = static_cast<int>(Damage * 1.5f);
 	}
-
+	
 	int FinalDamage = Target->TakeDamage(Damage);
 	FDamageResult result;
 	result.Damage = FinalDamage;
@@ -37,42 +39,10 @@ FDamageResult ACharacter::Attack(ACharacter* Target)
 
 int ACharacter::TakeDamage(int DamageAmount)
 {
-	int CalcDamage = max(DamageAmount - Stat.Def, 0);
-
-	Stat.Hp = max(Stat.Hp - CalcDamage, 0);
-
-	return CalcDamage;
-}
-
-bool ACharacter::IsDead()
-{
-	return Stat.Hp <= 0;
-}
-
-
-void ACharacter::DoAction(ACharacter* Target)
-{
-	if (getRandomInt(1,100) < 70)
-	{
-		Attack(Target);
-	}
-	else
-	{
-		if (Stat.Mp < 10)
-		{
-			cout << "마나가 부족합니다" << endl;
-			Attack(Target);
-		}
-		else
-		{
-			UseSkill(Target);
-		}
-	}
-	ShowStat();
-}
-
-void ACharacter::ShowStat()
-{
-	cout << "[" << Name << "]" << "HP : " << GetHP() << " / " << GetMaxHP() << "|"
-		<< "MP: " << GetMP() << " / " << GetMaxMP() << endl;
+	DamageAmount = DamageAmount - Stat.Def;
+	DamageAmount = std::max(DamageAmount, 0);
+	
+	Stat.Hp = Stat.Hp - DamageAmount;
+	Stat.Hp = std::max(Stat.Hp, 0);
+	return DamageAmount; 
 }

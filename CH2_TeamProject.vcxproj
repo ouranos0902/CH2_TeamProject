@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{74fd6abc-79e5-4c3c-8ca8-5d77cee58807}</ProjectGuid>
+    <ProjectGuid>{e05b76c3-660b-4da5-895c-9c424f8f5565}</ProjectGuid>
     <RootNamespace>CH2TeamProject</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -102,7 +102,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,17 +123,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Character\Monster\Monster.cpp" />
-    <ClCompile Include="Character\Player\Player.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Character\Character.cpp" />
-    <ClCompile Include="Character\Monster\Vampire\Vampire.cpp" />
+    <ClCompile Include="Character\Monster.cpp" />
+    <ClCompile Include="Character\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Character\Monster\Monster.h" />
-    <ClInclude Include="Character\Player\Player.h" />
     <ClInclude Include="Character\Character.h" />
-    <ClInclude Include="Character\Monster\Vampire\Vampire.h" />
+    <ClInclude Include="Character\Monster.h" />
+    <ClInclude Include="Character\Player.h" />
     <ClInclude Include="RandomUtil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

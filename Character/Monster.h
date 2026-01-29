@@ -1,15 +1,11 @@
 ﻿#pragma once
-#include "Character/Character.h"
-using namespace std;
+#include "Character.h"
 
 class AMonster : public ACharacter
 {
 public:
 	AMonster(const string& NewName, const FUnitStat& NewStat);
-	virtual FDamageResult Attack(ACharacter* Target)override;
 
-
-private:
-
+public:
+	FDamageResult Attack(ACharacter* Target) override;
 };
-

@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <random>
 
-inline int getRandomInt(int min, int max)
+inline int GetRandomInt(int min, int max)
 {
 	static std::random_device rd;
 	static std::mt19937 gen(rd());

@@ -1,17 +1,33 @@
 ﻿#pragma once
-#include <iostream>
+
 #include <string>
+
+using namespace std;
 
 struct FUnitStat
 {
-	int Hp = 0;
 	int MaxHp;
-	int Mp = 0;
 	int MaxMp;
 	int Atk;
 	int Def;
 	int Critical;
-
+	
+	int Hp = 0;
+	int Mp = 0;
+	
+	FUnitStat()
+	{
+	}
+	
+	FUnitStat(int MaxHp, int MaxMp, int Atk, int Def, int Critical)
+	{
+		this->MaxHp = MaxHp;
+		this->MaxMp = MaxMp;
+		
+		this->Atk = Atk;
+		this->Def = Def;
+		this->Critical = Critical;
+	}
 };
 
 struct FDamageResult
@@ -23,21 +39,21 @@ struct FDamageResult
 class ACharacter
 {
 public:
-	ACharacter(std::string NewName, const FUnitStat& NewStat);
-	~ACharacter();
-	virtual FDamageResult Attack(ACharacter* Target);
-	virtual void UseSkill(ACharacter* Target) = 0;
-	int TakeDamage(int DamageAmount);
-	void DoAction(ACharacter* Target);
-	bool IsDead();
-	void ShowStat();
-	int GetHP(){return Stat.Hp;}
-	int GetMaxHP(){	return Stat.MaxHp;}
-	int GetMP(){return Stat.Mp;}
-	int GetMaxMP(){return Stat.MaxMp;}
-	std::string GetName(){ return Name; }
+	ACharacter(const string& NewName, const FUnitStat& UnitStat);
+	virtual ~ACharacter();
 
 protected:
-	std::string Name;
+	string Name;
 	FUnitStat Stat;
+
+public:
+	const string& GetName() { return Name; }
+	int GetHp() const { return Stat.Hp; }
+	bool IsDead() const { return Stat.Hp <= 0; }
+	
+	virtual FDamageResult Attack(ACharacter* Target);
+	int TakeDamage(int DamageAmount);
+	
+private:
+	int GetRandomInt();
 };

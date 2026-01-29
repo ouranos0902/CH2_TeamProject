@@ -10,9 +10,9 @@ APlayer::APlayer(std::string NewName)
 
 void APlayer::Attack(ACharacter* Target)
 {
-	std::cout << "플레이어 " << Name << "(이)가 공격을 했습니다!" << std::endl;
+	std::cout << "플레이어 " << Name << "(이)가 검을 휘둘렀습니다!" << std::endl;
+	ACharacter::Attack(Target);
 
-	Target->TakeDamage(Stat.Atk);
 }
 
 void APlayer::UseSkill(ACharacter* Target)
@@ -22,7 +22,7 @@ void APlayer::UseSkill(ACharacter* Target)
 		std::cout << Name << "(이)가 회심의 일격을 사용합니다." << std::endl;
 		Stat.Mp -= 10;
 		int SkillDamage = Stat.Atk * 2;
-
+		
 		Target->TakeDamage(SkillDamage);
 }
 

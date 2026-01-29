@@ -21,14 +21,15 @@ ACharacter::~ACharacter()
 void ACharacter::Attack(ACharacter* Target)
 {
 	int CalcDamage = Stat.Atk;
-	string attackMsg = "(이)가 공격 합니다!";
+	string CriticalAttackMsg;
 
 	if (getRandomInt(0,100) <= Stat.Critical) 
 	{
 		CalcDamage = static_cast<int>(Stat.Atk * 1.5f);
-		attackMsg = "(이)가 치명타 공격을 합니다!";
+		CriticalAttackMsg = "(이)가 치명타 공격을 합니다!";
+		cout << Name << CriticalAttackMsg << CalcDamage << endl;
 	}
-		cout << Name << attackMsg << CalcDamage << endl;
+		
 		Target->TakeDamage(CalcDamage);
 }
 

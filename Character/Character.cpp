@@ -34,7 +34,7 @@ void ACharacter::Attack(ACharacter* Target)
 
 void ACharacter::TakeDamage(int DamageAmount)
 {
-	int FinalDamage = max(DamageAmount = Stat.Def, 0);
+	int FinalDamage = max(DamageAmount - Stat.Def, 0);
 
 	Stat.Hp = max(Stat.Hp - FinalDamage, 0);
 

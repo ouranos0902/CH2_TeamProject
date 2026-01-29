@@ -9,12 +9,11 @@ using namespace std;
 AMonster::AMonster(const string& NewName, const FUnitStat& NewStat)
 	: ACharacter(NewName,NewStat)
 {
-	
 }
 
 void AMonster::Attack(ACharacter* Target)
 {
-	cout << "몬스터 " << Name << "이(가) 이빨로 물어 뜯습니다!" << endl;
+	cout << "몬스터 " << Name << " 이(가) 이빨로 물어 뜯습니다!" << endl;
 	
 	Target->TakeDamage(Stat.Atk);
 }

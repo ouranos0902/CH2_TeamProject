@@ -15,10 +15,9 @@ FDamageResult APlayer::Attack(ACharacter* Target)
 	string AttackMessage = "이(가) 대검으로 공격합니다.";
 	if (result.bCritical)
 	{
-		AttackMessage = "이(가) 대검으로 뚝배기를 깻습니다~! 아 아프겟다.. ㅠㅠ";
+		AttackMessage = "이(가) 치명적인 공격을 가합니다.";
 	}
-	cout << Name << AttackMessage << "데미지: " << result.Damage << endl;
-	cout << Target->GetName() << " HP: " << Target->GetHp() << endl;
+	result.PrintMessage(AttackMessage);
 	return result;
 }
 
@@ -30,4 +29,24 @@ void APlayer::LevelUp()
 void APlayer::UseItem()
 {
 
+}
+
+void APlayer::UseSkill(ACharacter* Target)
+{
+	if (Stat.Mp < 10) 
+	{
+		return; 
+	}
+
+	Stat.Mp -= 10;
+
+	FDamageResult result;
+	result.Attacker = this;
+	result.Target = Target;
+	result.bCritical = false;
+	
+	int FinalDamage = Target->TakeDamage(Stat.Atk * 2);
+	result.Damage = FinalDamage;
+
+    result.PrintMessage("-필살기- 회심의 일격...!");
 }

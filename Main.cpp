@@ -9,7 +9,10 @@ using namespace std;
 
 int main()
 {
-    ACharacter* Player = new APlayer("용사", FUnitStat(200, 50, 30, 5, 10));
+    cout << "닉네임을 입력해주세요" << endl;
+    string name;
+    cin >> name;
+    ACharacter* Player = new APlayer(name, FUnitStat(200, 50, 30, 5, 10));
     ACharacter* Monster = new AMonster("몬스터", FUnitStat(100, 30, 20, 3, 10));
 
     cout << "===  데스매치 시작!  ===" << endl;

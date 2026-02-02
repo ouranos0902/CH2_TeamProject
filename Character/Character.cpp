@@ -31,10 +31,20 @@ FDamageResult ACharacter::Attack(ACharacter* Target)
 		Damage = static_cast<int>(Damage * 1.5f);
 	}
 	
-	int FinalDamage = Target->TakeDamage(Damage);
+	int bSKill = getRandomInt(1, 100);
+
+		if (bSKill < 30)
+		{
+			UseSkill(Target);
+		}
+	
 	FDamageResult result;
+	int FinalDamage = Target->TakeDamage(Damage);
+	result.Attacker = this;
+	result.Target = Target;
 	result.Damage = FinalDamage;
 	result.bCritical = bCritical;
+
 	return result;
 }
 
@@ -46,4 +56,32 @@ int ACharacter::TakeDamage(int DamageAmount)
 	Stat.Hp = Stat.Hp - DamageAmount;
 	Stat.Hp = std::max(Stat.Hp, 0);
 	return DamageAmount; 
+}
+
+void FDamageResult::PrintMessage(const string& AttackMessage)
+{
+	cout << "-------------------------------------------------" << endl;
+	Attacker->PrintName();
+	cout << AttackMessage << '\n';
+
+	Target->PrintName();
+	cout << "'받은 데미지': " << Damage << " -> '남은 HP': " << Target->GetHp() << "/" << Target->GetMaxHp() << endl;
+	cout << "-------------------------------------------------" << endl;
+}
+
+void ACharacter::PrintName()
+{
+	cout << "[" << Name << "]";
+}
+
+void ACharacter::Heal(int Amount)
+{
+	int PrevHp = Stat.Hp;
+	Stat.Hp = Amount;
+	Stat.Hp = min(Stat.MaxHp, Stat.Hp);
+
+	int ActualHeal = Stat.Hp - PrevHp;
+
+	PrintName();
+	cout << ActualHeal << "HP를 회복했습니다...!" << endl;
 }

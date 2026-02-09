@@ -40,6 +40,7 @@ void AMonster::UseSkill(ACharacter* Target)
 	int Damage = Stat.Atk;
 
 	int FinalDamage = Target->TakeDamage(Damage);
+
 	result.Damage = FinalDamage;
 	
 	Stat.Hp = min(Stat.Hp + FinalDamage, Stat.MaxHp);

@@ -1,11 +1,19 @@
 ﻿#include <Windows.h>
 #include <iostream>
+//#include <conio.h>
 
 #include "Character/Character.h"
 #include "Character/Monster.h"
 #include "Character/Player.h"
 
+
 using namespace std;
+
+void WaitForPlayerInput()
+{
+    system("Pause");
+    cout << endl;
+}
 
 int main()
 {
@@ -16,11 +24,11 @@ int main()
     ACharacter* Monster = new AMonster("몬스터", FUnitStat(100, 30, 20, 3, 10));
 
     cout << "===  데스매치 시작!  ===" << endl;
-    Sleep(1000);
+    WaitForPlayerInput();
     
     while (!Player->IsDead() && !Monster->IsDead()) 
     {
-        Player->Attack(Monster);
+        Player->PlayTurn(Monster);
         
         if (Monster->IsDead())
         {
@@ -28,15 +36,15 @@ int main()
             break;
         }
         
-        Sleep(500);
-        Monster->Attack(Player);
+        WaitForPlayerInput();
+        Monster->PlayTurn(Player);
         if (Player->IsDead())
         {
             cout << "플레이어가 쓰러졌습니다... 패배..." << endl;
             break;
         }
 
-        Sleep(1000);
+        WaitForPlayerInput();
     }
 
     delete Player;

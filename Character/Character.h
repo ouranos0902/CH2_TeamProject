@@ -63,4 +63,5 @@ public:
 	int TakeDamage(int DamageAmount);
 	void PrintName();
 	void Heal(int Amount);
+	void PlayTurn(ACharacter* Target);
 };

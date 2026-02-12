@@ -97,13 +97,17 @@ void ACharacter::PlayTurn(ACharacter* Target)
 		Attack(Target);
 		return;
 	}
-
 	if (Stat.Mp >= SkillMp) 
 	{
 		UseSkill(Target);
 		return;
 	}
-	
 		Attack(Target);
 	
+}
+
+void ACharacter::ShowStat()
+{
+	cout << "[" << Name << "]" << "HP: " << Stat.Hp << " / " << Stat.MaxHp << " | "
+	 << Stat.Mp << " / " << Stat.MaxMp << endl;
 }

@@ -64,4 +64,5 @@ public:
 	void PrintName();
 	void Heal(int Amount);
 	void PlayTurn(ACharacter* Target);
+	void ShowStat();
 };

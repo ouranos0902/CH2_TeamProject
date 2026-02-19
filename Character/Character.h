@@ -59,7 +59,9 @@ public:
 	bool IsDead() const { return Stat.Hp <= 0; }
 	
 	virtual FDamageResult Attack(ACharacter* Target);
+	
 	virtual void UseSkill(ACharacter* Target) = 0;
+	
 	int TakeDamage(int DamageAmount);
 	void PrintName();
 	void Heal(int Amount);

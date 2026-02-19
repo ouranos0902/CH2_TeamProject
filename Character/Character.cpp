@@ -31,13 +31,6 @@ FDamageResult ACharacter::Attack(ACharacter* Target)
 		Damage = static_cast<int>(Damage * 1.5f);
 	}
 	
-	int bSKill = getRandomInt(1, 100);
-
-		if (bSKill < 30)
-		{
-			UseSkill(Target);
-		}
-	
 	FDamageResult result;
 	int FinalDamage = Target->TakeDamage(Damage);
 	result.Attacker = this;
@@ -88,22 +81,14 @@ void ACharacter::Heal(int Amount)
 
 void ACharacter::PlayTurn(ACharacter* Target)
 {
-	const int AttackRate = 70;
-	const int SkillMp = 10;
-	int RandomValue = getRandomInt(1, 100);
-
-	if (RandomValue > AttackRate) 
+	if (getRandomInt(1,100) < 50)
 	{
 		Attack(Target);
-		return;
 	}
-	if (Stat.Mp >= SkillMp) 
+	else
 	{
 		UseSkill(Target);
-		return;
 	}
-		Attack(Target);
-	
 }
 
 void ACharacter::ShowStat()

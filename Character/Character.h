@@ -56,6 +56,10 @@ public:
 	const string& GetName() { return Name; }
 	int GetHp() const { return Stat.Hp; }
 	int GetMaxHp() const { return Stat.MaxHp; }
+	int GetMp() const { return Stat.Mp; }
+	int GetAtk() const { return Stat.Atk;}
+	int GetCritical() const { return Stat.Critical; }
+	FUnitStat& GetStat() {return Stat;}
 	bool IsDead() const { return Stat.Hp <= 0; }
 	
 	virtual FDamageResult Attack(ACharacter* Target);

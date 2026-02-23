@@ -129,6 +129,11 @@
     <ClCompile Include="Character\Character.cpp" />
     <ClCompile Include="Character\Monster.cpp" />
     <ClCompile Include="Character\Player.cpp" />
+    <ClCompile Include="Skill\MonsterAttackSkill.cpp" />
+    <ClCompile Include="Skill\MonsterDrainSkill.cpp" />
+    <ClCompile Include="Skill\PlayerAttackSkill.cpp" />
+    <ClCompile Include="Skill\PlayerHealSkill.cpp" />
+    <ClCompile Include="Skill\PlayerStrikeSkill.cpp" />
     <ClCompile Include="Skill\Skill.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -213,6 +218,11 @@
     <ClInclude Include="Character\Monster.h" />
     <ClInclude Include="Character\Player.h" />
     <ClInclude Include="RandomUtil.h" />
+    <ClInclude Include="Skill\MonsterAttackSkill.h" />
+    <ClInclude Include="Skill\MonsterDrainSkill.h" />
+    <ClInclude Include="Skill\PlayerAttackSkill.h" />
+    <ClInclude Include="Skill\PlayerHealSkill.h" />
+    <ClInclude Include="Skill\PlayerStrikeSkill.h" />
     <ClInclude Include="Skill\Skill.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
